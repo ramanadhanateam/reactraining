@@ -1,55 +1,98 @@
 import React from'react';
-import {Avatar, Grid,Paper,Typography,Link}from '@mui/material';
-import { padding } from '@mui/system';
-import HomeIcon from '@mui/icons-material/Home';
+import {Grid,CardContent,Card}from '@mui/material';
 import TextField from '@mui/material/TextField';
-import Checkbox from '@mui/material/Checkbox';
+
 import Button from '@mui/material/Button';
-import FormControlLabel from '@mui/material/FormControlLabel';
+
+import { useFormik} from 'formik';
+import * as Yup from 'yup';
 
 
 
+const validationSchema = Yup.object({
+  email: Yup
+    .string('Enter your email')
+    .email('Enter a valid email')
+    .required('Email is required'),
+  password: Yup
+    .string('Enter your password')
+    .min(8, 'Password should be of minimum 8 characters length')
+     
+    .min(7, 'Password is too short - should be 7 chars minimum.')
+    .matches(/[a-z]/, 'should contain lowercase letters' )
+    .matches(/[A-Z]/, 'should contain uppercase letters' )
+    .matches(/[0-9]/, 'should contain numbers letters' )
+    .matches(/[@,#,$,!,^,&&,****,(]/, 'should contain one special charater' )
+    .required("password required"),
+   
+});
 
-const Login=()=>{
-   const paperstyle= {padding:20,height:'70vh',width:280,margin:'20px auto'}
-   const avatarstyle= {backgroundColor:'blue'}
-    const label = { inputProps: { 'aria-label': 'Checkbox demo' } }
-    const btnstyle={margin: '8px 0px',padding: '8px',inlineSize: '-webkit-fill-available',letterSpacing:'2px' }
-    const username={ margin:'8px 0',padding:'8px',inlineSize: '-webkit-fill-available'}
-    const password={ margin:'8px 0',padding:'8px', inlineSize: '-webkit-fill-available'}
-    return(
-        <Grid>
-            <Paper elevation={10}style={paperstyle}>
-                <Grid align='center'>
-                <Avatar style={avatarstyle}><HomeIcon/></Avatar>
-                <h2>Login</h2>
-                </Grid>
-                <TextField label="username"placeholder="enter your name" style={username}fullwidth required/>
-                <TextField label="password"placeholder="enter your password" type="password" style ={password}fullwidth required/>
+const Login = () => {
+  const formik = useFormik({
+    initialValues:{
+      email: '',
+      password: '',
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+     localStorage.setItem('user',JSON.stringify(formik));
+     
+    },
+  });
+
+  return (
+    <div >
+      
+      <Card sx={{ maxWidth: 500}} >
+      <CardContent>
         
-                 <FormControlLabel
-          value="end"
-          control={<Checkbox />}
-          label="Remember me"
-          labelPlacement="end"
-  
+      <Grid container spacing={2} direction='column' padding={2} >
+      <Grid align='center' >
+        <Grid item xs={12}>
+      <h1>Login</h1>
+      </Grid>
+      <form onSubmit={formik.handleSubmit}>
+      <Grid item xs={12} padding={2} >
+        <TextField
+          fullWidth
+          id="email"
+          name="email"
+          label="Email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
         />
- 
-                <Grid align='center'>
-                        <Button type ="submit"variant="contained"style={btnstyle} size="large" >LOGIN</Button>
-                </Grid>
-                <Typography> <Link href="#" >
-                                    Forgot password?    
-                              </Link> 
-                </Typography>
-                    <Typography>Need an account? <Link href="#" >
-                                     Sign up 
-                              </Link> 
-                    </Typography>
-                 
-            </Paper>
-                
         </Grid>
-    );
-}
+        <Grid item xs={12} padding={2}>
+        <TextField
+          fullWidth
+          id="password"
+          name="password"
+          label="Password"
+          type="password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
+        />
+        </Grid>
+     <Grid item xs={12}padding={2}>
+    
+        <Button color="primary" variant="contained" fullWidth type="submit">
+          Submit
+        </Button>
+        </Grid>
+      </form>
+      </Grid>
+      </Grid>
+      </CardContent>
+      </Card>
+    
+    </div>
+  );
+};
+
 export default Login;
+
+  
