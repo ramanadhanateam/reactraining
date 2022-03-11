@@ -80,7 +80,7 @@ const Login = () => {
   return (
     <div >
       
-      <Card sx={{ maxWidth: 500}}  >
+      <Card sx={{ maxWidth: 500}}>
       <CardContent >
         
       <Grid container spacing={2} direction='column' padding={2} >
