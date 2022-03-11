@@ -1,11 +1,12 @@
-import React from'react';
+
 import {Grid,CardContent,Card}from '@mui/material';
 import TextField from '@mui/material/TextField';
-
+import {useNavigate} from "react-router-dom";
 import Button from '@mui/material/Button';
 
 import { useFormik} from 'formik';
 import * as Yup from 'yup';
+
 
 
 
@@ -28,14 +29,47 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
-  const formik = useFormik({
+  const mails=[
+    'tom@yopmail.com' 
+   ,
+    'jerry@yopmail.com',
+    
+    'sharon@yopmail.com',
+  
+    'jim@yopmaiom ',
+
+
+   'jit@yopmail.com'
+   ,
+
+  ]
+ let navigate=useNavigate();
+ 
+  var formik = useFormik({
+    
     initialValues:{
       email: '',
       password: '',
+     
     },
+   
+   
     validationSchema: validationSchema,
+  
     onSubmit: (values) => {
-     localStorage.setItem('user',JSON.stringify(formik));
+      const checkIsExist=mails.filter(e=>e===values.email)
+      if (checkIsExist.length){
+        window.alert('you cannot use this email')
+      }
+      else{
+        window.alert('sucess')
+      }
+      
+   
+    console.log( localStorage.setItem('user',JSON.stringify(formik)));
+    
+    
+    
      
     },
   });
@@ -44,7 +78,7 @@ const Login = () => {
     <div >
       
       <Card sx={{ maxWidth: 500}} >
-      <CardContent>
+      <CardContent >
         
       <Grid container spacing={2} direction='column' padding={2} >
       <Grid align='center' >
@@ -78,10 +112,13 @@ const Login = () => {
         />
         </Grid>
      <Grid item xs={12}padding={2}>
-    
-        <Button color="primary" variant="contained" fullWidth type="submit">
-          Submit
+   
+        <Button color="primary" variant="contained" fullWidth type="submit" onClick={()=>{navigate("/dash");}}
+         >
+        submit
         </Button>
+        
+        
         </Grid>
       </form>
       </Grid>
