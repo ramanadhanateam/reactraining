@@ -10,6 +10,7 @@ import * as Yup from 'yup';
 
 
 
+
 const validationSchema = Yup.object({
   email: Yup
     .string('Enter your email')
@@ -62,7 +63,7 @@ const Login = () => {
         window.alert('you cannot use this email')
       }
       else{
-        window.alert('sucess')
+        window.alert("success")
       }
       
    
@@ -73,11 +74,13 @@ const Login = () => {
      
     },
   });
+    
+  
 
   return (
     <div >
       
-      <Card sx={{ maxWidth: 500}} >
+      <Card sx={{ maxWidth: 500}}  >
       <CardContent >
         
       <Grid container spacing={2} direction='column' padding={2} >
