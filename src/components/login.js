@@ -3,13 +3,8 @@ import {Grid,CardContent,Card}from '@mui/material';
 import TextField from '@mui/material/TextField';
 import {useNavigate} from "react-router-dom";
 import Button from '@mui/material/Button';
-
 import { useFormik} from 'formik';
 import * as Yup from 'yup';
-
-
-
-
 
 const validationSchema = Yup.object({
   email: Yup
@@ -18,8 +13,6 @@ const validationSchema = Yup.object({
     .required('Email is required'),
   password: Yup
     .string('Enter your password')
-    .min(8, 'Password should be of minimum 8 characters length')
-     
     .min(7, 'Password is too short - should be 7 chars minimum.')
     .matches(/[a-z]/, 'should contain lowercase letters' )
     .matches(/[A-Z]/, 'should contain uppercase letters' )
@@ -30,20 +23,8 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
-  const mails=[
-    'tom@yopmail.com' 
-   ,
-    'jerry@yopmail.com',
-    
-    'sharon@yopmail.com',
-  
-    'jim@yopmaiom ',
-
-
-   'jit@yopmail.com'
-   ,
-
-  ]
+  const emails=['tom@yopmail.com','jerry@yopmail.com','sharon@yopmail.com','jim@yopmaiom ','jit@yopmail.com']
+ 
  let navigate=useNavigate();
  
   var formik = useFormik({
@@ -53,36 +34,24 @@ const Login = () => {
       password: '',
      
     },
-   
-   
     validationSchema: validationSchema,
   
     onSubmit: (values) => {
-      const checkIsExist=mails.filter(e=>e===values.email)
+      const checkIsExist=emails.filter(e=>e===values.email)
       if (checkIsExist.length){
         window.alert('you cannot use this email')
       }
       else{
         window.alert("success")
       }
-      
-   
-    console.log( localStorage.setItem('user',JSON.stringify(formik)));
-    
-    
-    
-     
+    console.log( localStorage.setItem('user',JSON.stringify(formik)));  
     },
   });
-    
-  
-
   return (
     <div >
       
       <Card sx={{ maxWidth: 500}}>
-      <CardContent >
-        
+      <CardContent >  
       <Grid container spacing={2} direction='column' padding={2} >
       <Grid align='center' >
         <Grid item xs={12}>
@@ -119,9 +88,7 @@ const Login = () => {
         <Button color="primary" variant="contained" fullWidth type="submit" onClick={()=>{navigate("/dash");}}
          >
         submit
-        </Button>
-        
-        
+        </Button>  
         </Grid>
       </form>
       </Grid>
