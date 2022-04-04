@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Typography, Button, Step, StepLabel, CardContent, Card, TextField, Stepper, } from "@mui/material";
-import { createStyles } from '@mui/styles';
 import { useFormik, useFormikContext } from "formik";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,38 +9,7 @@ import StateNames from "./StateNames";
 import { useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
 import './Style.css';
-const useStyles = createStyles((theme) => ({
-    button: {
 
-        padding: '23px',
-        margin: '0px 5px',
-        width: '-webkit-fill-available',
-        display: 'flex',
-        height: '20px',
-    },
-    form: {
-        margin: 'auto',
-        padding: '100px',
-        width: 'max-content'
-
-    },
-    card: {
-        padding: '80px',
-        width: 'fit-content',
-        margin: 'auto',
-    },
-    //textfield:{
-    //margin: 'auto',
-    //padding: '2px',
-    //width: '600px',
-    //height: 'fit-content'
-
-    //},
-    stepper: {
-        margin: '-70px',
-        padding: 'initial',
-
-    },}));
 const validationSchema = Yup.object({
     firstName: Yup
         .string('Enter your first name')

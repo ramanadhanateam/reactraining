@@ -6,7 +6,7 @@ import { SideBarData } from './SideBarData';
 import SubBarMenu from './SideBarMenu'
 import { IconContext } from 'react-icons/lib';
 import { Button,Typography } from '@mui/material';
-import "./Style.css";
+import "../Style.css";
 const SideBar = () => {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
