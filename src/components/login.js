@@ -26,7 +26,6 @@ const Login = () => {
             password: '',
         },
         validationSchema: validationSchema,
-
         onSubmit: (values) => {
             const checkIsExist = emails.filter(e => e === values.email)
             if (checkIsExist.length) {

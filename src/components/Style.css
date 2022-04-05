@@ -131,3 +131,7 @@ font-size: 18px;
   .button-logout{
     margin-left: auto!important;
   }
+  .scroller-style{
+      display:flex;
+      flex-direction: column;
+  }

@@ -12,27 +12,32 @@ export const SideBarData = [
     icon: <HomeIcon  />,
   },
   {
-    title: 'User Manager',
-    path: '/User',
+    title: 'User Management',
+    path: '/dashboard/usermanagement',
     icon: <ManageAccountsIcon />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     subNav:[
       {
         title: 'User list',
-        path: '/User/UserList',
+        path: '/dashboard/userlist',
         icon: <IoIcons.IoIosPaper />,
       },
       {
         title: 'User Menu',
-        path: '/User/UserMenu',
+        path: '/dashboard/usermenu',
         icon: <IoIcons.IoIosPaper />,
       },
     ]
   },
   {
     title: 'Todos',
-    path: '/Todos',
+    path: '/todos',
+    icon: <AssignmentIcon/>,
+  },
+  {
+    title: 'Gallery',
+    path: '/dashboard/gallery',
     icon: <AssignmentIcon/>,
   },
 ];
