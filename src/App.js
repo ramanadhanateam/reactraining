@@ -12,6 +12,7 @@ import GalleryView from './components/Gallery/GalleryView';
 import Todos from './components/Users/Todos';
 import { pink, purple } from '@mui/material/colors';
 import { ThemeProvider,createTheme} from '@mui/material/styles';
+
 const theme=createTheme({
   palette:{
     primary:{

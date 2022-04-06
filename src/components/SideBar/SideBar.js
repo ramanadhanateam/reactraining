@@ -5,12 +5,13 @@ import * as AiIcons from 'react-icons/ai';
 import { SideBarData } from './SideBarData';
 import SubBarMenu from './SideBarMenu'
 import { IconContext } from 'react-icons/lib';
-import { Button,Typography } from '@mui/material';
+import { Button} from '@mui/material';
 import "../Style.css";
+
 const SideBar = () => {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
-  const handleLogout=()=>{
+  const handleLogout = () => {
     localStorage.clear()
     window.location.replace("/")
   }
@@ -21,9 +22,9 @@ const SideBar = () => {
           <Link to='#' className='nav-icon'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          <Button variant="contained" className='button-logout'type="submit" onClick={handleLogout}>LogOut</Button>
+          <Button variant="contained" className='button-logout' type="submit" onClick={handleLogout}>LogOut</Button>
         </div>
-        <nav className={`sidebar ${sidebar ? 'active':''}`} style={{ left: sidebar ? '0' : '-100%'}}>
+        <nav className={`sidebar ${sidebar ? 'active' : ''}`} style={{ left: sidebar ? '0' : '-100%' }}>
           <div className='sidebar-wrap'>
             <Link to='#' className='nav-icon'>
               <AiIcons.AiOutlineClose onClick={showSidebar} />
