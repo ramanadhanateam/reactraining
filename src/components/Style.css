@@ -1,14 +1,10 @@
 .steppr-container{
-    padding: 20px;
+    padding:100px;
 }
-
 .card-container{
-    
     display: flex;
     justify-content: center;
-    
     height: 100vh;
-
 }
 .card-container > div{
     width: 100%;
@@ -24,7 +20,6 @@
     display: flex;
     justify-content: center;
     margin: auto;
-    padding: 20px;
     margin-top: 10px;
     width: 100%;
 }
@@ -33,9 +28,9 @@
     display: flex;
 }
 .address-style{
-    margin:50px 50px;
-   align-content: center;
-
+    margin: auto;
+    margin-top:50px;
+    padding: auto;
 }
 .button-style{
     align-content: center;
@@ -43,7 +38,6 @@
 .text-field{
     display: flex;
     gap: 20px;
-
 }
 .address-containertop{
     gap: 30px;
@@ -88,7 +82,6 @@
   justify-content: center;
   position: fixed;
   top: 0;
- 
   transition: 350ms;
   z-index: 10;
 }
@@ -105,6 +98,15 @@ list-style: none;
 height: 60px;
 text-decoration: none;
 font-size: 18px;
+}
+.sidebar + div{
+  transition: .5s;
+  width: 100%;
+}
+.sidebar.active + div{
+  transition: .5s;
+ width: 73%;
+ margin-left: 26%;
 }
 .side-menu:hover {
     background: #4527a0;
@@ -134,4 +136,27 @@ font-size: 18px;
   .scroller-style{
       display:flex;
       flex-direction: column;
+  }
+  .button-back{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    width: max-content;
+  }
+  .formstepper-pos {
+    margin: auto;
+  }
+  .helpertext-wrap{
+min-height: 20px;
+  }
+  .select-field div{
+    margin: 0px;
+  }
+  .container{
+    padding:10px;
+  }
+  .container > div{
+    margin:5px;
+    display: inline;
+    grid-template-columns: repeat(auto-fill,minmax(450px,1fr));
   }

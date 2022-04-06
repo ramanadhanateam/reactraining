@@ -1,8 +1,9 @@
-import { Grid, CardContent, Card,Button,TextField } from '@mui/material';
-import { useNavigate } from "react-router-dom";
+import { Grid, CardContent, Card,Button,TextField,FormHelperText} from '@mui/material';
+import { useNavigate,Link } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './Style.css'
+
 const validationSchema = Yup.object({
     email: Yup
         .string('Enter your email')
@@ -56,8 +57,8 @@ const Login = () => {
                                         value={formik.values.email}
                                         onChange={formik.handleChange}
                                         error={formik.touched.email && Boolean(formik.errors.email)}
-                                        helperText={formik.touched.email && formik.errors.email}
                                     />
+                                    <FormHelperText>{formik.touched.email && formik.errors.email}</FormHelperText>
                                 </Grid>
                                 <Grid item xs={12} padding={2}>
                                     <TextField
@@ -69,14 +70,16 @@ const Login = () => {
                                         value={formik.values.password}
                                         onChange={formik.handleChange}
                                         error={formik.touched.password && Boolean(formik.errors.password)}
-                                        helperText={formik.touched.password && formik.errors.password}
                                     />
+                                    <FormHelperText>{formik.touched.password && formik.errors.password}</FormHelperText>
                                 </Grid>
                                 <Grid item xs={12} padding={2}>
                                     <Button color="primary" variant="contained" fullWidth type="submit"
                                     >
                                         submit
                                     </Button>
+                                        Don't have an account? 
+                                    <Link to="/signup">Signup</Link>
                                 </Grid>
                             </form>
                         </Grid>

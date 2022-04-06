@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Button, Step, StepLabel, CardContent, Card, TextField, Stepper, } from "@mui/material";
+import { Typography, Button, Step, StepLabel, CardContent, Card, TextField, Stepper, FormHelperText} from "@mui/material";
 import { useFormik, useFormikContext } from "formik";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -26,20 +26,21 @@ const validationSchema = Yup.object({
         .required("password required"),
     confirmPassword: Yup
         .string()
-        .oneOf([Yup.ref('password'), null], 'password does not match'),
+        .oneOf([Yup.ref('password'), null], 'password does not match')
+        .required("confirm password required"),
     phoneNumber: Yup
         .string()
-        .min(10)
+        .min(10,'atleast 10 numbers')
         .max(12)
         .required('A phone number is required'),
     age: Yup
-        .number("A phone number can't include a decimal point")
+        .number("Age can't include a decimal point")
         .min(8)
         .test('max', value => value <= 65 && value >= 18)
         .required('A phone number is required'),
     gender: Yup
         .string()
-        .required('A phone number is required'),
+        .required('gender is required'),
     address1: Yup
         .string()
         .required('Address required'),
@@ -73,6 +74,7 @@ const BasicForm = ({ formik }) => {
                     <CardContent >
                         <div className="form-field">
                             <div className="text-field">
+                                <div className="textfield-wrap">
                                 <TextField
                                     className="textfield"
                                     id="first-name"
@@ -85,21 +87,24 @@ const BasicForm = ({ formik }) => {
                                     value={formik.values.firstName}
                                     error={formik.touched.firstName && Boolean(formik.errors.firstName)}
                                     onChange={formik.handleChange}
-                                    helperText={formik.errors.firstName || ''}
                                 />
-                                <TextField
-                                    id="last-name"
-                                    label="Last Name"
-                                    variant="outlined"
-                                    placeholder="Enter Your Last Name"
-                                    fullWidth
-                                    name="lastName"
-                                    onChange={formik.handleChange}
-                                    autoComplete="off"
-                                    value={formik.values.lastName}
-                                    error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-                                    helperText={formik.errors.lastName || ''}
-                                />
+                                    <FormHelperText className="helpertext-wrap">{formik.errors.firstName || ''}</FormHelperText>
+                                </div>
+                                <div className="textfield-wrap">
+                                    <TextField
+                                                id="last-name"
+                                                label="Last Name"
+                                                variant="outlined"
+                                                placeholder="Enter Your Last Name"
+                                                fullWidth
+                                                name="lastName"
+                                                onChange={formik.handleChange}
+                                                autoComplete="off"
+                                                value={formik.values.lastName}
+                                                error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                                     />
+                                    <FormHelperText className="helpertext-wrap">{formik.errors.lastName || ''}</FormHelperText>
+                                </div>
                             </div>
                         </div>
                     </CardContent>
@@ -116,6 +121,7 @@ const ContactForm = ({ formik }) => {
                 <CardContent >
                     <div className="form-field">
                         <div className="text-field">
+                        <div className="textfield-wrap">
                             <TextField
                                 id="email"
                                 label="E-mail"
@@ -128,8 +134,10 @@ const ContactForm = ({ formik }) => {
                                 value={formik.values.emailAddress}
                                 error={formik.touched.emailAddress && Boolean(formik.errors.emailAddress)}
                                 onChange={formik.handleChange}
-                                helperText={formik.errors.emailAddress || ''}
                             />
+                              <FormHelperText className="helpertext-wrap">{formik.errors.emailAddress || ''}</FormHelperText>
+                            </div>
+                              <div className="textfield-wrap">
                             <TextField
                                 id="phone-number"
                                 label="Phone Number"
@@ -139,9 +147,10 @@ const ContactForm = ({ formik }) => {
                                 name="phoneNumber"
                                 value={formik.values.phoneNumber}
                                 error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
-                                helperText={formik.errors.phoneNumber || ''}
                                 onChange={formik.handleChange}
                             />
+                             <FormHelperText className="helpertext-wrap">{formik.errors.phoneNumber || ''}</FormHelperText>
+                             </div>
                         </div>
                     </div>
                 </CardContent>
@@ -158,6 +167,7 @@ const PersonalForm = ({ formik }) => {
                     <CardContent >
                         <div className="form-field">
                             <div className="text-field">
+                            <div className="textfield-wrap">
                                 <TextField
                                     id="password"
                                     label="Password"
@@ -169,8 +179,10 @@ const PersonalForm = ({ formik }) => {
                                     value={formik.values.password}
                                     error={formik.touched.password && Boolean(formik.errors.password)}
                                     onChange={formik.handleChange}
-                                    helperText={formik.errors.password || ''}
                                 />
+                                 <FormHelperText className="helpertext-wrap">{formik.errors.password  || ''}</FormHelperText>
+                                 </div>
+                                 <div className="textfield-wrap">
                                 <TextField
                                     id="ConfirmPassword"
                                     label="Confirm Password"
@@ -182,8 +194,9 @@ const PersonalForm = ({ formik }) => {
                                     value={formik.values.confirmPassword}
                                     error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
                                     onChange={formik.handleChange}
-                                    helperText={formik.errors.confirmPassword || ''}
                                 />
+                                 <FormHelperText className="helpertext-wrap">{formik.errors.confirmPassword || ''}</FormHelperText>
+                                 </div>
                             </div>
                         </div>
                     </CardContent>
@@ -201,6 +214,7 @@ const AddressForm = ({ formik }) => {
                         <div className="address-style">
                             <div className="address-containertop">
                                 <div className="address-container">
+                                <div className="textfield-wrap">
                                     <TextField
                                         id="address1"
                                         label="Address 1"
@@ -210,9 +224,11 @@ const AddressForm = ({ formik }) => {
                                         name="address1"
                                         value={formik.values.address1}
                                         error={formik.touched.address1 && Boolean(formik.errors.address1)}
-                                        helperText={formik.errors.address1 || ''}
                                         onChange={formik.handleChange}
                                     />
+                                     <FormHelperText className="helpertext-wrap">{formik.errors.address1  || ''}</FormHelperText>
+                                     </div>
+                                     <div className="textfield-wrap">
                                     <TextField
                                         id="address2"
                                         label="Address 2"
@@ -223,11 +239,13 @@ const AddressForm = ({ formik }) => {
                                         autoComplete="off"
                                         value={formik.values.address2}
                                         error={formik.touched.address2 && Boolean(formik.errors.address2)}
-                                        helperText={formik.errors.address2 || ''}
                                         onChange={formik.handleChange}
                                     />
+                                     <FormHelperText className="helpertext-wrap">{formik.errors.address2 || ''}</FormHelperText>
+                                     </div>
                                 </div>
                                 <div className="address-container">
+                                <div className="textfield-wrap">
                                     <TextField
                                         id="address3"
                                         label="Address 3"
@@ -237,10 +255,12 @@ const AddressForm = ({ formik }) => {
                                         name="address3"
                                         autoComplete="off"
                                         value={formik.values.address3}
-                                        error={formik.touched.address3 && Boolean(formik.errors.address3)}
-                                        helperText={formik.errors.address3 || ''}
+                                        error={formik.touched.address3&& Boolean(formik.errors.address3)}
                                         onChange={formik.handleChange}
                                     />
+                                     <FormHelperText className="helpertext-wrap">{formik.errors.address3  || ''}</FormHelperText>
+                                     </div>
+                                     <div className="textfield-wrap">
                                     <TextField
                                         id="pinNumber"
                                         label="Pin number"
@@ -250,9 +270,10 @@ const AddressForm = ({ formik }) => {
                                         name="pinNumber"
                                         value={formik.values.pinNumber}
                                         error={formik.touched.pinNumber && Boolean(formik.errors.pinNumber)}
-                                        helperText={formik.errors.pinNumber || ''}
                                         onChange={formik.handleChange}
                                     />
+                                     <FormHelperText className="helpertext-wrap">{formik.errors.pinNumber || ''}</FormHelperText>
+                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -270,6 +291,7 @@ const AgeForm = ({ formik }) => {
                     <CardContent >
                         <div className="form-field">
                             <div className="text-field">
+                            <div className="textfield-wrap">
                                 <TextField
                                     id="age"
                                     label="Age"
@@ -280,8 +302,10 @@ const AgeForm = ({ formik }) => {
                                     value={formik.values.age}
                                     error={formik.touched.age && Boolean(formik.errors.age)}
                                     onChange={formik.handleChange}
-                                    helperText={formik.errors.age || ''}
                                 />
+                                 <FormHelperText className="helpertext-wrap">{formik.errors.age || ''}</FormHelperText>
+                                 </div>
+                                 <div className="textfield-wrap select-field">
                                 <FormControl sx={{ m: 1, minWidth: 120, minInlineSize: 200 }}
                                 >
                                     <InputLabel id="gender">Gender</InputLabel>
@@ -292,13 +316,14 @@ const AgeForm = ({ formik }) => {
                                         onChange={formik.handleChange}
                                         value={formik.values.gender}
                                         error={formik.touched.gender && Boolean(formik.errors.gender)}
-                                        helperText={formik.errors.gender || ''}
                                     >
                                         <MenuItem value={"male"} >Male</MenuItem>
-                                        <MenuItem value={"Female"}  >Female</MenuItem>
-                                        <MenuItem value={"Others"}    >Others</MenuItem>
+                                        <MenuItem value={"Female"}>Female</MenuItem>
+                                        <MenuItem value={"Others"}>Others</MenuItem>
                                     </Select>
+                                    <FormHelperText className="helpertext-wrap">{formik.errors.gender || ''}</FormHelperText>
                                 </FormControl>
+                                </div>
                             </div>
                         </div>
                     </CardContent>
@@ -346,7 +371,6 @@ const LinaerStepper = () => {
     const handleFormSubmit = values => {
         console.log(values)
     }
-
     const formik = useFormik({
         initialValues: {
             firstName: "",
@@ -369,7 +393,6 @@ const LinaerStepper = () => {
             alert(window.JSON.stringify(values))
             window.location.replace('/dashboard')
         },
-        
     })
     const [activeStep, setActiveStep] = useState(0);
     const steps = getSteps();
@@ -377,10 +400,8 @@ const LinaerStepper = () => {
         return step === 1 || step === 2;
     };    const isStepFalied = () => {
     };
-
     useEffect(() => {
         formik.validateForm()
-
     }, [])
     const handleNext = (e) => {
         e.preventDefault()
@@ -428,8 +449,10 @@ const LinaerStepper = () => {
     let navigate = useNavigate();
     return (
         <div className="steppr-container" >
-            <form>
-                <Stepper alternativeLabel activeStep={activeStep} >
+            <form >
+                                    
+                <div className="formstepper-pos">
+                <Stepper alternativeLabel activeStep={activeStep}  >
                     {steps.map((step, index) => {
                         const labelProps = {};
                         const stepProps = {};
@@ -454,11 +477,12 @@ const LinaerStepper = () => {
                         );
                     })}
                 </Stepper>
+                </div>
                 {activeStep === steps.length ? (
-                    <div >
+                    <div align="center" >
                         <Typography>
                             <h1>completed!!</h1>
-                            <Button
+                            <Button 
                                 variant="contained"
                                 color="primary"
                                 align="center"
@@ -470,15 +494,15 @@ const LinaerStepper = () => {
                     </div>
                 ) : (
                     <>
-                        <div>
+                        <div className="button-back">
                             {getStepContent(activeStep, formik)}
-                            <Button
+                            <Button 
                                 disabled={activeStep === 0}
                                 onClick={handleBack}
                             >
                                 back
                             </Button>
-                            <Button
+                            <Button 
                                 variant="contained"
                                 color="primary"
                                 type="submit"

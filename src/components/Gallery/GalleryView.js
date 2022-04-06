@@ -2,12 +2,13 @@ import axios from "axios";
 import React,{useState,useEffect} from "react";
 import InfiniteScroller from "./InfiniteScroller";
 import"../Style.css"
+
 function GalleryView(){
     const[page,setPage]=useState(0)
     const [data,setData]=useState([])
     const[has,setHas]=useState(true)
     const getGallery=(_page)=>{
-        axios.get(`https://jsonplaceholder.typicode.com/photos?_page=${_page}&_limit=10`)
+        axios.get(`https://jsonplaceholder.typicode.com/photos?_start=${_page?(_page *10) :0}&_limit=10`)
         .then(res=>{
             const result=[...data,...res.data]
            setData(result)
@@ -27,10 +28,13 @@ items={data}
 hasmore={has}
 loadmore={handleLoadmore}
 >
+    <div className="container">
 {data.map((item)=>(
-    <img src={item.url} height="100px"width="150px" />
+    <div key={item.id}>
+    <img src={item.url} height="150px"width="200px" />
+    </div>
 ))}
-
+</div>
 </InfiniteScroller>
     )
 }

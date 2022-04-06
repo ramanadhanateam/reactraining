@@ -20,19 +20,19 @@ export const SideBarData = [
     subNav:[
       {
         title: 'User list',
-        path: '/dashboard/userlist',
+        path: '/dashboard/usermanagement/userlist',
         icon: <IoIcons.IoIosPaper />,
       },
       {
         title: 'User Menu',
-        path: '/dashboard/usermenu',
+        path: '/dashboard/usermanagement/usermenu',
         icon: <IoIcons.IoIosPaper />,
       },
     ]
   },
   {
     title: 'Todos',
-    path: '/todos',
+    path: '/dashboard/todos',
     icon: <AssignmentIcon/>,
   },
   {

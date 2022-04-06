@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const UserMenu = () => {
+export const UserManagement = () => {
   return (
     <div>hello</div>
   )

@@ -6,7 +6,6 @@ const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'name', headerName: 'Name', width: 230 },
     { field: 'address', headerName: 'Address', width: 330, valueGetter: (params) =>(
-        
       `  street:${params.row.address.street || ''} 
         city:${params.row.address.city || ''} `
     )}
@@ -21,7 +20,8 @@ function UserList() {
             .catch(err => console.log(err))
     }, [])
     return (
-                        <div style={{ height: 500, width: '100%' }}>
+        //width 60%
+                        <div style={{ height: 500, width: '80%' }} >
                             <DataGrid
                                 rows={data}
                                 columns={columns}

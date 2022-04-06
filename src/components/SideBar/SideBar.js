@@ -23,7 +23,7 @@ const SideBar = () => {
           </Link>
           <Button variant="contained" className='button-logout'type="submit" onClick={handleLogout}>LogOut</Button>
         </div>
-        <nav className="sidebar"style={{ left: sidebar ? '0' : '-100%'}}>
+        <nav className={`sidebar ${sidebar ? 'active':''}`} style={{ left: sidebar ? '0' : '-100%'}}>
           <div className='sidebar-wrap'>
             <Link to='#' className='nav-icon'>
               <AiIcons.AiOutlineClose onClick={showSidebar} />
