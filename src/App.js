@@ -10,10 +10,23 @@ import { UserMenu } from './components/Users/UserMenu';
 import {UserManagement} from './components/Users/UserManagement'
 import GalleryView from './components/Gallery/GalleryView';
 import Todos from './components/Users/Todos';
+import { pink, purple } from '@mui/material/colors';
+import { ThemeProvider,createTheme} from '@mui/material/styles';
+const theme=createTheme({
+  palette:{
+    primary:{
+      main:pink[500]
+    },
+    secondary:{
+      main:purple[500]
+    },
+  },
+});
 function App() {
   const loggedIn=localStorage.getItem('user')
   return (
     <>
+    <ThemeProvider theme={theme}>
     <Router>
      {loggedIn && <SideBar/>}  
       <Routes>
@@ -28,6 +41,7 @@ function App() {
         <Route path='*'element={<Navigate to="/login"/>}></Route>
       </Routes>
     </Router>
+    </ThemeProvider>
     </>
   );
 }
