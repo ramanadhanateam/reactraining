@@ -1,15 +1,16 @@
 import React from 'react';
-import * as IoIcons from 'react-icons/io';
 import * as RiIcons from 'react-icons/ri';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import HomeIcon from '@mui/icons-material/Home';
+import SummarizeIcon from '@mui/icons-material/Summarize';
+import BallotIcon from '@mui/icons-material/Ballot';
 
 export const SideBarData = [
   {
     title: 'DashBoard',
-    path: '/',
-    icon: <HomeIcon  />,
+    path: '/dashboard',
+    icon: <HomeIcon />,
   },
   {
     title: 'User Management',
@@ -21,18 +22,18 @@ export const SideBarData = [
       {
         title: 'User list',
         path: '/dashboard/usermanagement/userlist',
-        icon: <IoIcons.IoIosPaper />,
+        icon: <SummarizeIcon />,
       },
       {
         title: 'User Menu',
         path: '/dashboard/usermanagement/usermenu',
-        icon: <IoIcons.IoIosPaper />,
+        icon: <BallotIcon />,
       },
     ]
   },
   {
     title: 'Todos',
-    path: '/dashboard/todos',
+    path: '/dashboard/todo',
     icon: <AssignmentIcon/>,
   },
   {

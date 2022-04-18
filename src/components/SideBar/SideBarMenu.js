@@ -6,8 +6,8 @@ const [subnav,setSubnav]=useState(false)
 const showSubnav=()=>setSubnav(!subnav)
   return (
     <>
-     <Link to={item.path} className="side-menu"onClick={item.subNav&&showSubnav}>
-        <div>
+     <Link to={!item.subNav ? item.path : '#'} className="side-menu"onClick={item.subNav && showSubnav}>
+        <div className='items-icon'>
           {item.icon}
           <span className="sidebar-label">{item.title}</span>
           </div>
@@ -19,7 +19,7 @@ const showSubnav=()=>setSubnav(!subnav)
             : null} 
           </div>
        </Link>
-       {subnav&&item.subNav.map((item,index)=>{
+       {subnav && item.subNav.map((item,index)=>{
          return(
            <Link to={item.path} key={index} className="dropdown">
              {item.icon}

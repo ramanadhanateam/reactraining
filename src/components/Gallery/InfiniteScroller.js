@@ -1,6 +1,6 @@
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import "../Style.css"
+import "../Style.scss"
 
 function InfiniteScroller({ items, hasmore, children, loadmore }) {
   return (

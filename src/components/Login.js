@@ -2,7 +2,7 @@ import { Grid, CardContent, Card,Button,TextField,FormHelperText} from '@mui/mat
 import { useNavigate,Link } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import './Style.css'
+import './Style.scss'
 
 const validationSchema = Yup.object({
     email: Yup
@@ -39,7 +39,7 @@ const Login = () => {
     });
     return (
         <div className='card-container' >
-            <Card sx={{ maxWidth: 500 }}>
+            <Card sx={{ maxWidth: 500 ,height: 400}}>
                 <CardContent >
                     <Grid container spacing={2} direction='column' padding={2} >
                         <Grid align='center' >
@@ -49,6 +49,7 @@ const Login = () => {
                             <form onSubmit={formik.handleSubmit}>
                                 <Grid item xs={12} padding={2} >
                                     <TextField
+                                
                                         fullWidth
                                         id="email"
                                         name="email"
@@ -58,7 +59,7 @@ const Login = () => {
                                         onChange={formik.handleChange}
                                         error={formik.touched.email && Boolean(formik.errors.email)}
                                     />
-                                    <FormHelperText>{formik.touched.email && formik.errors.email}</FormHelperText>
+                                    <FormHelperText error>{formik.touched.email && formik.errors.email}</FormHelperText>
                                 </Grid>
                                 <Grid item xs={12} padding={2}>
                                     <TextField
@@ -71,7 +72,7 @@ const Login = () => {
                                         onChange={formik.handleChange}
                                         error={formik.touched.password && Boolean(formik.errors.password)}
                                     />
-                                    <FormHelperText>{formik.touched.password && formik.errors.password}</FormHelperText>
+                                    <FormHelperText error>{formik.touched.password && formik.errors.password}</FormHelperText>
                                 </Grid>
                                 <Grid item xs={12} padding={2}>
                                     <Button color="primary" variant="contained" fullWidth type="submit"
