@@ -179,3 +179,11 @@
 	margin: auto;
 	gap: 10px;
   }
+  .finish-display{
+	  display: flex;
+	  margin: auto;
+	  flex-direction: column;
+  }
+  .finish-button{
+	  width: 13em;
+  }

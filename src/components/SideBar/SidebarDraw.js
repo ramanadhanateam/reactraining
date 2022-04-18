@@ -14,7 +14,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Button} from '@mui/material';
 import SideBarMenu from './SideBarMenu';
 import { SideBarData } from './SideBarData';
-const drawerWidth = 240;
+const drawerWidth = 270;
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     flexGrow: 1,
