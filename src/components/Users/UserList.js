@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import AppPagination from './AppPagination'
+import AlertDialog from "./AlertDialog";
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'name', headerName: 'Name', width: 230 },
@@ -33,6 +34,8 @@ function UserList() {
             <TableCell>id</TableCell>
             <TableCell align="left">Name</TableCell>
             <TableCell align="left">Email</TableCell>
+            <TableCell align="left"></TableCell>
+           
           </TableRow>
         </TableHead>
         <TableBody>
@@ -46,6 +49,7 @@ function UserList() {
               </TableCell>
               <TableCell align="left">{row.name}</TableCell>
               <TableCell align="left">{row.email}</TableCell>
+              <TableCell align="left"><AlertDialog /></TableCell>
             </TableRow>
           ))}
         </TableBody>

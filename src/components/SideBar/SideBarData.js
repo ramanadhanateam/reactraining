@@ -41,4 +41,10 @@ export const SideBarData = [
     path: '/dashboard/gallery',
     icon: <AssignmentIcon/>,
   },
+  {
+    title: 'Image Crop',
+    path: '/dashboard/imagecrop',
+    icon: <AssignmentIcon/>,
+  },
+
 ];

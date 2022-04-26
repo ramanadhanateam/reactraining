@@ -26,5 +26,10 @@ const routes = [
     component: lazy(() => import('../components/Users/Todos')),
     exact: true
   },
+  {
+    path: '/dashboard/imagecrop',
+    component: lazy(() => import('../components/ImageCrop/')),
+    exact: true
+  },
 ];
 export default routes;
