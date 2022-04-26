@@ -9,7 +9,7 @@ import axios from 'axios';
 
 
 
-export default function AlertDialog() {
+export default function AlertDialog({id, handleDelete}) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -19,11 +19,6 @@ export default function AlertDialog() {
   const handleClose = () => {
     setOpen(false);
   };
-  // const handleDelete = (id) =>{
-  //   axios.delete(`http://localhost:3001/users/${id}`);
-    
-  // }
-
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
@@ -45,7 +40,7 @@ export default function AlertDialog() {
         </DialogContent> */}
         <DialogActions>
           <Button onClick={handleClose}>No</Button>
-          <Button onClick={handleClose} autoFocus>
+          <Button onClick={handleDelete} autoFocus>
            Yes
           </Button> 
         </DialogActions>

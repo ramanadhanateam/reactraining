@@ -26,6 +26,15 @@ function UserList() {
             })
             .catch(err => console.log(err))
     },[page])
+    const handleDelete = (id)=>{
+      const updatedData = data.filter(user => (user.id !== id));
+      // Axios.delete(`https://jsonplaceholder.typicode.com/comments/${id}`)
+      //       .then(res => {
+      //           console.log(res.data)
+      //       })
+      //       .catch(err => console.log(err))
+      setData(updatedData)
+    }
     return (
         <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -49,7 +58,7 @@ function UserList() {
               </TableCell>
               <TableCell align="left">{row.name}</TableCell>
               <TableCell align="left">{row.email}</TableCell>
-              <TableCell align="left"><AlertDialog /></TableCell>
+              <TableCell align="left"><AlertDialog handleDelete={()=> handleDelete(row.id)}/></TableCell>
             </TableRow>
           ))}
         </TableBody>
