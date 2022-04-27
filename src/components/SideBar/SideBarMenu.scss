@@ -1,0 +1,40 @@
+.side-menu {
+	display: flex;
+	color: #3A3845;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	list-style: none;
+	height: 60px;
+	text-decoration: none;
+	font-size: 18px;
+	&:hover {
+		background: #B9F8D3;
+		border-left: 4px solid #f50057;
+		cursor: pointer;
+	}
+	&:focus{
+		background-color: #B9F8D3;
+	}
+}
+.sidebar-label {
+	margin-left: 16px;
+}
+.dropdown {
+	background: #f50057;
+	height: 60px;
+	padding-left: 3rem;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: #ede7f6;
+	font-size: 18px;
+	gap: 10px;
+	&:hover {
+		background: #c51162;
+		cursor: pointer;
+	}
+	&:focus{
+		background-color: #c51162;
+	}
+}

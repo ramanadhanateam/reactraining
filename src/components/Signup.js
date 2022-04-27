@@ -8,7 +8,7 @@ import Select from '@mui/material/Select';
 import StateNames from "./StateNames";
 import { useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
-import './Style.scss';
+import './Signup.scss';
 
 function getSteps() {
     return [

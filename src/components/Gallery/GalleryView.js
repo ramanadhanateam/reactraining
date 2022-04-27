@@ -1,7 +1,7 @@
 import axios from "axios";
 import React,{useState,useEffect} from "react";
-import InfiniteScroller from "./InfiniteScroller";
-import"../Style.scss"
+import InfiniteScroller from "../InfiniteScroller/InfiniteScroller";
+import"./GalleryView.scss"
 
 function GalleryView(){
     const[page,setPage]=useState(0)

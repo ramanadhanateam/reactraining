@@ -2,7 +2,7 @@ import { Grid, CardContent, Card,Button,TextField,FormHelperText} from '@mui/mat
 import { useNavigate,Link } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import './Style.scss'
+import './Login.scss'
 
 const validationSchema = Yup.object({
     email: Yup
